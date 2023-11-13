@@ -19,11 +19,27 @@ public class DataGenerator {
         return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
-    public static String generateCity(String locale) {
+    //public static String generateCity(String locale) {
         // TODO: добавить логику для объявления переменной city и задания её значения, генерацию можно выполнить
         // с помощью Faker, либо используя массив валидных городов и класс Random
-        var faker = new Faker(new Locale(locale));
-        return faker.address().cityName();
+        //var faker = new Faker(new Locale(locale));
+        //return faker.address().cityName();
+     public static String generateCity() {
+        var cities = new String[]{"Майкоп", "Горно-Алтайск", "Уфа", "Улан-Удэ", "Махачкала", "Донецк",
+                                  "Магас", "Нальчик", "Элиста", "Черкесск", "Петрозаводск", "Сыктывкар",
+                                  "Симферополь", "Луганск", "Йошкар-Ола", "Саранск", "Якутск", "Владикавказ",
+                                  "Казань", "Кызыл", "Ижевск", "Абакан", "Грозный", "Чебоксары", "Барнаул",
+                                  "Чита", "Петропавловск-Камчатский", "Краснодар", "Красноярск", "Пермь",
+                                  "Владивосток", "Ставрополь", "Хабаровск", "Благовещенск", "Архангельск",
+                                  "Астрахань", "Белгород", "Брянск", "Владимир", "Волгоград", "Вологда", "Воронеж",
+                                  "Мелитополь", "Иваново", "Иркутск", "Калининград", "Калуга", "Кемерово",
+                                  "Киров", "Кострома", "Курган", "Курск", "Санкт-Петербург", "Липецк", "Магадан",
+                                  "Москва", "Мурманск", "Нижний Новгород", "Великий Новгород", "Новосибирск", "Омск",
+                                  "Оренбург", "Орёл", "Пенза", "Псков", "Ростов-на-Дону", "Рязань", "Самара",
+                                  "Сараток", "Южно-Сахалинск", "Екатеренбург", "Смоленск", "Тамбов", "Тверь",
+                                  "Томск", "Тула", "Тюмень", "Ульяновск", "Херсон", "Челябинск", "Ярославль",
+                                  "Севастополь", "Биробиджан", "Нарьян-Мар", "Ханты-Мансийск", "Анадырь", "Салехард"};
+        return cities[new Random().nextInt(cities.length)];
     }
 
     public static String generateName(String locale) {
@@ -47,7 +63,7 @@ public class DataGenerator {
         public static UserInfo generateUser(String locale) {
             // TODO: добавить логику для создания пользователя user с использованием методов generateCity(locale),
             // generateName(locale), generatePhone(locale)
-            return new UserInfo(generateCity(locale), generateName(locale), generatePhone(locale));
+            return new UserInfo(generateCity(), generateName(locale), generatePhone(locale));
         }
     }
 
